@@ -22,12 +22,13 @@ export class HousesNewComponent implements OnInit {
 
   createHouse() {
     const name = this.loginForm.value.name;
+    const address = this.loginForm.value.address;
     const description = this.loginForm.value.description;
     const price = this.loginForm.value.price;
     const url = this.loginForm.value.url;
 
     if (this.sharedService.role !== 'Agent') {
-      this.house = {name: name, description: description, price: price, url: url, owner: this.sharedService.user};
+      this.house = {name: name, address: address, description: description, price: price, url: url, owner: this.sharedService.user};
       this.houseService.createHouse(this.userId, this.house).subscribe(hou => {
         this.router.navigateByUrl('/user/' + this.userId + '/house');
       });
