@@ -30,7 +30,6 @@ export class UserService {
 
 
   updateUser(user) {
-    console.log(user);
     return this._http.put<User>(this.baseUrl + '/api/user/' + user._id, user);
   }
 

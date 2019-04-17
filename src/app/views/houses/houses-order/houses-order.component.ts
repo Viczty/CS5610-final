@@ -34,7 +34,7 @@ export class HousesOrderComponent implements OnInit {
       this.userId = params['uid'];
 
     });
-    if (this.role === 'Agent') {
+    if (this.role !== 'Agent') {
       this.houseService.findHouseByBuyerId(this.userId)
         .subscribe(data => {
           console.log('in houses-order comp...');

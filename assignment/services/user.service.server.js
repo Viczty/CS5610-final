@@ -41,12 +41,12 @@ module.exports = function (app) {
   }
 
   var facebookConfig = {
-    clientID: process.env.FACEBOOK_CLIENT_ID,
-    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: process.env.FACEBOOK_CALLBACK_URL
-    // clientID: '284823739103129',
-    // clientSecret: '445bbf707e1ef692ddb34b52f6bec5a5',
-    // callbackURL: '/auth/facebook/callback'
+    // clientID: process.env.FACEBOOK_CLIENT_ID,
+    // clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    // callbackURL: process.env.FACEBOOK_CALLBACK_URL
+    clientID: '284823739103129',
+    clientSecret: '445bbf707e1ef692ddb34b52f6bec5a5',
+    callbackURL: '/auth/facebook/callback'
   };
 
   passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
@@ -80,7 +80,7 @@ module.exports = function (app) {
   }
 
   app.get("/api/user/:userId", findUserById);
-  app.get("/api/user", findUserByCredential);
+  // app.get("/api/user", findUserByCredential);
   app.post("/api/login", passport.authenticate('local'), login);
   app.get('/facebook/login', passport.authenticate('facebook', {scope: 'email'}));
   app.get('/auth/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/#/login'}),
@@ -167,6 +167,7 @@ module.exports = function (app) {
   function findUserByUsername(req, res) {
     console.log("hit find user by username...");
     let username = req.query['username'];
+    console.log(username);
     userModel.findUserByUserName(username).exec(
       function (err, user) {
         if (err) {

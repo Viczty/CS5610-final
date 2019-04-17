@@ -53,9 +53,9 @@ Every page has the left icon, user could click it to the previous page.
 ## User operations
 Landing page shows the animation and click the Login to login.  
 After loggedin, the user will be redirected to profile page and be able to update their information. Click the Houses button to redirect to house detail page. Click logout button to logout.  
-Click the plus icon on house list page, the seller could add a new house.  
+Click the plus icon on house list page, the seller could add a new house. The agent needs to provide the seller's username to create a new house.  
 If alice click the List My Houses label, it will only display her 3 houses.  
-Click the More Info button, the page will redirect to house detail page. Owner could see the edit button on this page. If it is not sold, the buyer could see the Buy button. After clicking Buy button, the house displays in the my order component. The map displays the marker based on its address. If bob deletes the house in my order, others could buy this house again.  
+Click the More Info button, the page will redirect to house detail page. Owner could see the edit button on this page. If it is not sold, the buyer/Agent could see the Buy button. The agent needs to provide the buyer's username to buy. After clicking Buy button, the house displays in the my order component. The map displays the marker based on its address. If bob deletes the house in my order, others could buy this house again.  
 Click the Add Comment button on house detail page, a user could add a new comment. The config icon displays only if it's the current user's comment.
 
 ## Further help

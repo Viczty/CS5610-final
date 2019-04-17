@@ -3,6 +3,8 @@ import {NgForm} from '@angular/forms';
 import {HouseService} from '../../../services/house.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SharedService} from '../../../services/shared.service';
+import {UserService} from '../../../services/user.service.client';
+import {User} from '../../../models/user.model.client';
 
 @Component({
   selector: 'app-houses-new',
@@ -15,7 +17,7 @@ export class HousesNewComponent implements OnInit {
   @ViewChild('f') loginForm: NgForm;
   house: {};
 
-  constructor(private houseService: HouseService, private router: Router, private activatedRoute: ActivatedRoute, private sharedService: SharedService) {
+  constructor(private houseService: HouseService, private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute, private sharedService: SharedService) {
   }
 
   createHouse() {
@@ -26,13 +28,18 @@ export class HousesNewComponent implements OnInit {
 
     if (this.sharedService.role !== 'Agent') {
       this.house = {name: name, description: description, price: price, url: url, owner: this.sharedService.user};
+      this.houseService.createHouse(this.userId, this.house).subscribe(hou => {
+        this.router.navigateByUrl('/user/' + this.userId + '/house');
+      });
     } else {
       const owner = this.loginForm.value.owner;
-      this.house = {name: name, description: description, price: price, url: url, agent: this.userId, owner: owner};
+      this.userService.findUserByUsername(owner).subscribe(user => {
+        this.house = {name: name, description: description, price: price, url: url, agent: this.userId, owner: user._id};
+        this.houseService.createHouse(this.userId, this.house).subscribe(hou => {
+          this.router.navigateByUrl('/user/' + this.userId + '/house');
+        });
+      });
     }
-    this.houseService.createHouse(this.userId, this.house).subscribe(hou => {
-      this.router.navigateByUrl('/user/' + this.userId + '/house');
-    });
   }
 
   ngOnInit() {
