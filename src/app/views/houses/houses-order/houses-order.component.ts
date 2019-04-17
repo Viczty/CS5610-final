@@ -14,9 +14,11 @@ export class HousesOrderComponent implements OnInit {
   userId: String;
   houses: [House];
   user: String;
+  role: String;
 
   constructor(private houseService: HouseService, private activatedRoute: ActivatedRoute, private router: Router, private sharedService: SharedService) {
     this.user = sharedService.user;
+    this.role = sharedService.role;
   }
 
   delete(house) {
@@ -32,12 +34,21 @@ export class HousesOrderComponent implements OnInit {
       this.userId = params['uid'];
 
     });
-    this.houseService.findHouseByBuyerId(this.userId)
-      .subscribe(data => {
-        console.log('in houses-order comp...');
-        console.log(data);
-        this.houses = data;
-      });
+    if (this.role === 'Agent') {
+      this.houseService.findHouseByBuyerId(this.userId)
+        .subscribe(data => {
+          console.log('in houses-order comp...');
+          console.log(data);
+          this.houses = data;
+        });
+    } else {
+      this.houseService.findHouseByAgentId(this.userId)
+        .subscribe(data => {
+          console.log('in houses-order comp...');
+          console.log(data);
+          this.houses = data;
+        });
+    }
   }
 
 }

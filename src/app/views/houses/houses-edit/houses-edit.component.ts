@@ -13,7 +13,7 @@ export class HousesEditComponent implements OnInit {
   userId: String;
 
   constructor(private houseService: HouseService, private router: Router, private activatedRouter: ActivatedRoute) {
-    this.house = new House('123', 'Facebook', '123', '456', '#', 'Lorem', '123', 'house');
+    this.house = new House('123', 'Facebook', '123', '456', '#', 'Lorem', '123', 'agent', 'house');
   }
 
   updateHouse() {

@@ -30,6 +30,9 @@ export class HouseService {
     return this._http.get<[House]>(this.baseUrl + '/api/user/' + userId + '/order');
   }
 
+  findHouseByAgentId(userId) {
+    return this._http.get<[House]>(this.baseUrl + '/api/user/' + userId + '/agentOrder');
+  }
   updateHouse(houseId, house) {
     return this._http.put<House>(this.baseUrl + '/api/house/' + houseId, house);
   }

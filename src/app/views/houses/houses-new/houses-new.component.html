@@ -34,6 +34,10 @@
         <label for="house-url">Url</label>
         <input type="text" name="url" class="form-control" id="house-url" placeholder="Url" ngModel required #url="ngModel">
       </div>
+      <div class="form-group" *ngIf="role === 'Agent'">
+        <label for="owner">Seller ID (* required for Agent Role)</label>
+        <input type="text" name="owner" class="form-control" id="owner" placeholder="Seller ID" ngModel required #owner="ngModel">
+      </div>
       <div class="form-group">
         <label for="house-description">Description</label>
         <textarea name="description" id="house-description" class="form-control" rows="5" placeholder="Description" ngModel required #description="ngModel"></textarea>

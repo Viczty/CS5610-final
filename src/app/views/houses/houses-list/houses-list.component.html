@@ -15,6 +15,12 @@
     <a class="cl-text-white navbar-brand cl-text-bold" routerLink="/user/{{userId}}/order" *ngIf="role === 'Buyer'">
       My Order
     </a>
+    <a routerLink="/user/{{userId}}/house/new" class="navbar-link float-right cl-text-white cl-icon-padding" *ngIf="role === 'Agent'">
+      <span class="fas fa-plus"></span>
+    </a>
+    <a class="cl-text-white navbar-brand cl-text-bold" routerLink="/user/{{userId}}/order" *ngIf="role === 'Agent'">
+      My Order
+    </a>
   </div>
 </nav>
 

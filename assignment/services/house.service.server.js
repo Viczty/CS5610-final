@@ -5,6 +5,7 @@ module.exports = function (app) {
 //house related api
   app.get("/api/user/:userId/house", findAllHousesForUser);
   app.get("/api/user/:userId/order", findAllHousesForBuyer);
+  app.get("/api/user/:userId/agentOrder", findAllHousesForAgent);
   app.get("/api/house", findAllHouses);
   app.get("/api/house/:houseId", findHouseById);
   app.post("/api/user/:userId/house", createHouse);
@@ -58,6 +59,18 @@ module.exports = function (app) {
   function findAllHousesForBuyer(req, res) {
     let id = req.params.userId;
     houseModel.findAllHousesForBuyer(id).exec(
+      function (err, houses) {
+        if (err) {
+          return res.sendStatus(400).send(err);
+        }
+        return res.json(houses);
+      }
+    );
+  }
+
+  function findAllHousesForAgent(req, res) {
+    let id = req.params.userId;
+    houseModel.findAllHousesForAgent(id).exec(
       function (err, houses) {
         if (err) {
           return res.sendStatus(400).send(err);

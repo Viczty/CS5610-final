@@ -30,7 +30,16 @@
           <a routerLink="/user/{{userId}}/house/{{houseId}}" class="btn btn-primary"
              *ngIf="house && (role === 'Admin' || house.owner === user)">Edit</a>
         </p>
-        <a class="btn btn-primary" (click)="buy(house)" *ngIf="role === 'Buyer' && house && (!house.buyer || house.buyer==null)">Buy</a>
+
+        <form #f="ngForm">
+          <div class="form-group" *ngIf="role === 'Agent' && house && (!house.buyer || house.buyer==null)">
+            <label for="buyer">Buyer ID (* required for Agent Role)</label>
+            <input type="text" name="buyer" class="form-control" id="buyer" placeholder="Buyer ID" ngModel required #buyer="ngModel">
+          </div>
+        </form>
+
+        <a class="btn btn-primary" (click)="buy(house)" *ngIf="(role === 'Buyer' || role === 'Agent') && house && (!house.buyer || house.buyer==null)">Buy</a>
+
       </div>
       <app-comments-list></app-comments-list>
     </div>

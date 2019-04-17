@@ -6,9 +6,10 @@ export class House {
   url: String;
   owner: String;
   buyer: String;
+  agent: String;
   description: String;
 
-  constructor(_id, name, address, price, url, owner, buyer, description) {
+  constructor(_id, name, address, price, url, owner, buyer, agent, description) {
     this._id = _id;
     this.name = name;
     this.address = address;
@@ -16,6 +17,7 @@ export class House {
     this.url = url;
     this.owner = owner;
     this.buyer = buyer;
+    this.agent = agent;
     this.description = description;
   }
 

@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {HouseService} from '../../../services/house.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {House} from '../../../models/house.model.client';
 import {SharedService} from '../../../services/shared.service';
 import {PublicService} from '../../../services/public.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-houses-detail',
@@ -16,6 +17,8 @@ export class HousesDetailComponent implements OnInit {
   user: String;
   house: House;
   role: String;
+  @ViewChild('f') loginForm: NgForm;
+
 
   constructor(private houseService: HouseService, private activatedRoute: ActivatedRoute, private router: Router, private sharedService: SharedService, private publicService: PublicService) {
     // this.house = new House('1', '1', '1', '1', '1', '1', '1', '1');
@@ -24,7 +27,13 @@ export class HousesDetailComponent implements OnInit {
   }
 
   buy(house) {
-    this.house.buyer = this.userId;
+    if (this.role === 'Agent') {
+      const buyer = this.loginForm.value.buyer;
+      this.house.buyer = buyer;
+      this.house.agent = this.userId;
+    } else {
+      this.house.buyer = this.userId;
+    }
     this.houseService.updateHouse(this.houseId, this.house).subscribe(hou => {
       this.router.navigateByUrl('/user/' + this.userId + '/order');
     });
