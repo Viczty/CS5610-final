@@ -25,7 +25,7 @@ import {CommentService} from './services/comment.service.client';
 import { HousesDetailComponent } from './views/houses/houses-detail/houses-detail.component';
 import { HousesOrderComponent } from './views/houses/houses-order/houses-order.component';
 import {PublicService} from './services/public.service';
-import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './views/houses/houses-detail/map/map.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LandingComponent } from './views/landing/landing.component';
@@ -54,10 +54,9 @@ import { LandingComponent } from './views/landing/landing.component';
     AppRoutingModule,
     HttpClientModule,
     QuillEditorModule,
-    NgbModule.forRoot(),
     AgmCoreModule.forRoot({apiKey: 'AIzaSyDOzeEzBBf1fY_pG1_PcUUthiqmWU8Bpr0'}),
   ],
-  providers: [UserService, HouseService, CommentService, PublicService, GoogleMapsAPIWrapper, SharedService, FlickrService, AuthGuard],
+  providers: [UserService, HouseService, CommentService, PublicService, SharedService, FlickrService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

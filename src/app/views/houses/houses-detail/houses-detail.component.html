@@ -33,7 +33,7 @@
 
         <form #f="ngForm">
           <div class="form-group" *ngIf="role === 'Agent' && house && (!house.buyer || house.buyer==null)">
-            <label for="buyer">Buyer ID (* required for Agent Role)</label>
+            <label for="buyer">Buyer username (* required for Agent Role)</label>
             <input type="text" name="buyer" class="form-control" id="buyer" placeholder="Buyer ID" ngModel required #buyer="ngModel">
           </div>
         </form>

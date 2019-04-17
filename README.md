@@ -31,7 +31,11 @@ There are three roles: Admin, Seller, Buyer.
   - Read House
   - Select unsold house into their order, delete house in their order
   - CRUD their own comments
-
+### Agent could:
+  - Update profile
+  - CRUD House on behalf of owner
+  - Place/Delete order on behalf of buyer
+  - CRUD their own comments
 
 # Testing
 
