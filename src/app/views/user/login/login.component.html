@@ -1,8 +1,9 @@
-<div class="container-fluid">
+<div class="container">
+  <div class="center">
   <div *ngIf="errorFlag" class="alert alert-danger">
     {{errorMsg}}
   </div>
-
+<div class="position">
   <h1>Login</h1>
   <form (ngSubmit)="login()" #f="ngForm">
 
@@ -30,4 +31,6 @@
       <a routerLink="/register" class="btn btn-info btn-block">Register</a>
     </div>
   </form>
+</div>
+</div>
 </div>

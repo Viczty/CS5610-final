@@ -1454,11 +1454,12 @@ var HousesNewComponent = /** @class */ (function () {
     HousesNewComponent.prototype.createHouse = function () {
         var _this = this;
         var name = this.loginForm.value.name;
+        var address = this.loginForm.value.address;
         var description = this.loginForm.value.description;
         var price = this.loginForm.value.price;
         var url = this.loginForm.value.url;
         if (this.sharedService.role !== 'Agent') {
-            this.house = { name: name, description: description, price: price, url: url, owner: this.sharedService.user };
+            this.house = { name: name, address: address, description: description, price: price, url: url, owner: this.sharedService.user };
             this.houseService.createHouse(this.userId, this.house).subscribe(function (hou) {
                 _this.router.navigateByUrl('/user/' + _this.userId + '/house');
             });
@@ -1670,7 +1671,7 @@ module.exports = "form input.ng-invalid {\r\n  border: 2px solid red;\r\n}\r\n\r
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <div *ngIf=\"errorFlag\" class=\"alert alert-danger\">\n    {{errorMsg}}\n  </div>\n\n  <h1>Login</h1>\n  <form (ngSubmit)=\"login()\" #f=\"ngForm\">\n\n    <div class=\"form-group\">\n      <input ng-model=\"myName\" type=\"text\" name=\"username\" placeholder=\"username\" class=\"form-control\" ngModel required #username=\"ngModel\">\n    </div>\n    <span class=\"help-block\" *ngIf=\"!username.valid && username.touched\">\n      Please enter username!\n    </span>\n\n    <div class=\"form-group\">\n      <input ng-model=\"password\" type=\"password\" name=\"password\" placeholder=\"password\" class=\"form-control\" ngModel required #password=\"ngModel\">\n    </div>\n    <span class=\"help-block\" *ngIf=\"!password.valid && password.touched\">\n      Please enter password!\n    </span>\n    <div class=\"form-group\">\n      <a href=\"/facebook/login\" class=\"btn btn-primary btn-block\"> <span class=\"fab fa-facebook\"></span> Facebook </a>\n    </div>\n    <div class=\"form-group\">\n      <button [disabled]=\"!f.valid\" class=\"btn btn-success btn-block\" type=\"submit\">Login</button>\n    </div>\n\n    <div class=\"form-group\">\n      <a routerLink=\"/register\" class=\"btn btn-info btn-block\">Register</a>\n    </div>\n  </form>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"center\">\n  <div *ngIf=\"errorFlag\" class=\"alert alert-danger\">\n    {{errorMsg}}\n  </div>\n<div class=\"position\">\n  <h1>Login</h1>\n  <form (ngSubmit)=\"login()\" #f=\"ngForm\">\n\n    <div class=\"form-group\">\n      <input ng-model=\"myName\" type=\"text\" name=\"username\" placeholder=\"username\" class=\"form-control\" ngModel required #username=\"ngModel\">\n    </div>\n    <span class=\"help-block\" *ngIf=\"!username.valid && username.touched\">\n      Please enter username!\n    </span>\n\n    <div class=\"form-group\">\n      <input ng-model=\"password\" type=\"password\" name=\"password\" placeholder=\"password\" class=\"form-control\" ngModel required #password=\"ngModel\">\n    </div>\n    <span class=\"help-block\" *ngIf=\"!password.valid && password.touched\">\n      Please enter password!\n    </span>\n    <div class=\"form-group\">\n      <a href=\"/facebook/login\" class=\"btn btn-primary btn-block\"> <span class=\"fab fa-facebook\"></span> Facebook </a>\n    </div>\n    <div class=\"form-group\">\n      <button [disabled]=\"!f.valid\" class=\"btn btn-success btn-block\" type=\"submit\">Login</button>\n    </div>\n\n    <div class=\"form-group\">\n      <a routerLink=\"/register\" class=\"btn btn-info btn-block\">Register</a>\n    </div>\n  </form>\n</div>\n</div>\n</div>\n"
 
 /***/ }),
 
