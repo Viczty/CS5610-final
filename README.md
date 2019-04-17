@@ -17,7 +17,7 @@ The web application mainly contains User, House, Comment domain objects. The def
 
 ## Roles
 
-There are three roles: Admin, Seller, Buyer.
+There are four roles: Admin, Seller, Buyer, Agent.
 ### Admin could:
   - Update profile
   - CRUD House objects
